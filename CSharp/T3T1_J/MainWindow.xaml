@@ -1,0 +1,10 @@
+﻿<Window x:Class="T3T1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <TreeView SelectedItemChanged="TreeView_SelectedItemChanged_2" HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="517">
+        <TreeViewItem Header="Wein" Name="root"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
+        
+    </TreeView>
+</Window>
