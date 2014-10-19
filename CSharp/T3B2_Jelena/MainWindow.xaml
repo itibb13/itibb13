@@ -1,0 +1,16 @@
+﻿<Window x:Class="T3B2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Hast du die Aufgabe verstanden?" Height="200" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <RadioButton Name="radiob1" Content="Ja" Click="Radiob1_Click"  HorizontalAlignment="Left" Margin="65,54,55,0" VerticalAlignment="Top"/>
+        <RadioButton Name="radiob2" Content="Nein" Click="Radiob2_Click" HorizontalAlignment="Left" Margin="130,54,55,0" VerticalAlignment="Top" RenderTransformOrigin="0.545,-2.392"/>
+        <RadioButton Name="radiob3"  Content="Vielleicht" Click="Radiob3_Click" HorizontalAlignment="Left" Margin="195,54,0,0" VerticalAlignment="Top"/>
+        <Label Grid.Row="1" Name="label" Content="Antwort:" HorizontalAlignment="Left" Margin="55,10,0,0" VerticalAlignment="Top" Width="200" Height="40"/>
+
+    </Grid>
+</Window>
