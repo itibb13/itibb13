@@ -1,0 +1,19 @@
+﻿<Window x:Class="T3T1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="T3T1 - TreeView" Height="350" Width="525" WindowStartupLocation="CenterScreen" Icon="images/icon.jpg">
+    <DockPanel >
+        <Menu Name="menu1" DockPanel.Dock="Top" >
+            <MenuItem Header="_Datei">
+                <MenuItem Name="menuClose" Header="_Beenden" Click="miEventHandler" />
+            </MenuItem>
+            <MenuItem Header="_Info">
+                <MenuItem x:Name="menuAbout" Header="Über" Click="miEventHandler" />
+            </MenuItem>
+        </Menu>
+        <ScrollViewer Margin="20,20,20,20" DockPanel.Dock="top">
+            <TreeView Name="wineTree" SelectedItemChanged="evtWineTreeSelChange">
+            </TreeView>
+        </ScrollViewer>
+    </DockPanel>
+</Window>
