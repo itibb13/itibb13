@@ -1,0 +1,10 @@
+﻿<Window x:Class="WpfHelloWorld.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Hello World" Height="350" Width="525">
+    <Grid>
+        <Label Content="Hello World" HorizontalAlignment="Left" Margin="148,107,0,0" VerticalAlignment="Top" Height="49" Width="207"/>
+        <Button Name="but" Click="OnClick" Content="Hier klicken" HorizontalAlignment="Left" Margin="122,188,0,0" VerticalAlignment="Top" Width="259"/>
+
+    </Grid>
+</Window>
