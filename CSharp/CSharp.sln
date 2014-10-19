@@ -99,6 +99,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T3C3 - ComboBox_Thomas", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T3B3_CheckTextbox_Silvia", "t3b3_checktextbox\T3B3_CheckTextbox_Silvia.csproj", "{3E86ECCC-5D67-4E45-AA43-9D301B572357}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T2K9_Christian", "T2K9_Christian\T2K9_Christian.csproj", "{D29CB8B5-8A24-4DDE-B3E9-F450866F9FEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T2K7_Gottfried", "T2K7_Gottfried\T2K7_Gottfried.csproj", "{0AAAB82F-6724-45A4-BB35-B3C0B3837809}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -301,6 +305,14 @@ Global
 		{3E86ECCC-5D67-4E45-AA43-9D301B572357}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E86ECCC-5D67-4E45-AA43-9D301B572357}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E86ECCC-5D67-4E45-AA43-9D301B572357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D29CB8B5-8A24-4DDE-B3E9-F450866F9FEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D29CB8B5-8A24-4DDE-B3E9-F450866F9FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D29CB8B5-8A24-4DDE-B3E9-F450866F9FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D29CB8B5-8A24-4DDE-B3E9-F450866F9FEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AAAB82F-6724-45A4-BB35-B3C0B3837809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AAAB82F-6724-45A4-BB35-B3C0B3837809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AAAB82F-6724-45A4-BB35-B3C0B3837809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AAAB82F-6724-45A4-BB35-B3C0B3837809}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
