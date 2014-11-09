@@ -9,7 +9,7 @@ import inout.them.fhb.at.InOut;
 
 /**
  *
- * @author roland
+ * @author 
  */
 public abstract class Schiff 
 {
@@ -62,6 +62,7 @@ public abstract class Schiff
   {
     _rostFaktor = 1.0;
   }
+  
   /**
    * 
    */
