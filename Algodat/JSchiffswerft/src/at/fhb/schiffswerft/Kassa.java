@@ -25,7 +25,8 @@ public class Kassa
   private double _kassaBestand ;
   
   /**
-   * 
+   * Diese Konstruktor ist privat, daher muss jeder Aufruf 
+   * ueber die Methode getInstance() gemacht werden
    * @param betrag 
    */
   private Kassa()
@@ -34,7 +35,7 @@ public class Kassa
   }
   
   /**
-   * 
+   * Liefert eine Instanz zurueck
    * @return 
    */
   public static Kassa getInstance()
@@ -43,7 +44,7 @@ public class Kassa
   }
   
   /**
-   * 
+   * Es wird ein Betrag in die Kassa eingezahlt
    * @param betrag 
    */
   public void einzahlen (double betrag)
@@ -52,7 +53,9 @@ public class Kassa
   }
   
   /**
-   * 
+   * Hier wird Geld aus der Kassa entnommen.
+   * Wenn kein Geld mehr in der Kassa ist, dann wird eine
+   * Exception geworfen
    * @param betrag
    * @throws at.fhb.schiffswerft.SpielVerlorenException
    */
@@ -67,7 +70,7 @@ public class Kassa
   }
   
   /**
-   * 
+   * Liefert den aktuellen Kassabestand zuruech
    * @return 
    */
   public double getBestand ()
@@ -76,7 +79,7 @@ public class Kassa
   }
   
   /**
-   * 
+   * Druckt den Kassabestand aus (mit Text)
    */
   public void printKassaBestand()
   {
@@ -84,7 +87,7 @@ public class Kassa
   }
   
   /**
-   * 
+   * Druckt den aktuellen Kassabestand aus
    * @return 
    */
   public String toString()
