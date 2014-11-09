@@ -27,7 +27,7 @@ public abstract class Schiff
     _schiffsKennung = _naechsteFreieNummer;
     _naechsteFreieNummer ++;
     _rostFaktor = 1.0;
-    _anzahlAnstriche = 0;
+    _anzahlAnstriche = 1;
     InOut.printString("");
   }
   
@@ -62,17 +62,29 @@ public abstract class Schiff
   {
     _rostFaktor = 1.0;
   }
+  /**
+   * 
+   */
+  protected void erhoeheAnzahlAnstriche()
+  {
+    this._anzahlAnstriche++;
+  }
   
+  /**
+   * 
+   * @return 
+   */
   public int getAnzahlAnstriche()
   {
     return _anzahlAnstriche;
   }
   
-  abstract void streichen() throws SpielVerlorenException ;
+  abstract boolean streichen() throws SpielVerlorenException ;
   
   abstract double getKostenAnstrich() ;
   
   abstract double getKostenVerschrottung();
+  
   /**
    * 
    * @return 

@@ -42,12 +42,18 @@ public class Passagierschiff  extends Schiff {
     return Definitions.PASSAGIERSCHIFF_KOSTEN_ANSTRICH;
   }
   
-  public void streichen()  throws SpielVerlorenException
+  public boolean streichen()  throws SpielVerlorenException
   {
-     if ( getAnzahlAnstriche() <= Definitions.SCHIFFSANSTRICH_MAX)
+    if ( getAnzahlAnstriche() <= Definitions.SCHIFFSANSTRICH_MAX)
     {
       resetRostFaktor();
       Kassa.getInstance().entnehmen( Definitions.PASSAGIERSCHIFF_KOSTEN_ANSTRICH );
+      this.erhoeheAnzahlAnstriche();
+      return true;
     }
+    else
+      InOut.printString("Passagierschiff [" + this.getSchiffsKennung() +"] kann nicht mehr gestrichen werden. Es sollte verschrottet werden.");
+    
+    return false;
   }
 }

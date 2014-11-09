@@ -71,6 +71,8 @@ public class Schiffswerft
          InOut.printString("Schiff [" + x.getSchiffsKennung() + "] bringt einen Gewinn vom [" + gewinn + "] ein.");
         _kassa.einzahlen( gewinn );
       }
+      // anzahl der anstriche ausgeben
+      InOut.printString("Schiff [" + x.getSchiffsKennung() + "] hat [" + x.getAnzahlAnstriche() + "] Anstriche.");
     }
     // alle gesunkenen Schiffe aus der Werft rausschmeissen  
     _schiffe.removeAll(gesunkeneSchiffe);
@@ -156,14 +158,14 @@ public class Schiffswerft
          s = (Schiff) itr.next();
          if ( nr == s.getSchiffsKennung() )
          {
-           s.streichen();
-           gefunden = true;
+          gefunden = true;
          }
       }
       
     if (gefunden)
     {
-      InOut.printString("Das Schiff [" + nr +"] wurde um [" + 
+      if ( s.streichen() )
+        InOut.printString("Das Schiff [" + nr +"] wurde um [" + 
               s.getKostenAnstrich() + "] neu gestrichen."); 
     }
     else
