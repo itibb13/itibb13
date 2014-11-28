@@ -32,36 +32,30 @@ public class BankomatModelImplementation implements BankomatModel
    */
   public void pressButtonDigit(int digit)
   {
-    //if (cardInside && (theState == CARD_INSERTED))
+    
     if (theState == CARD_INSERTED)
     {
       theView.setText("");
     }
-    
-    //if (cardInside)
-    //{
+   
       switch (theState)
       {
         case CARD_INSERTED:
-          // TODO Do something according to state
           pinCode = pinCode + digit;
           setBankomatState(PINCODE_INPUT_DIGIT_1);
           theView.setText("X---");
           break;
         case PINCODE_INPUT_DIGIT_1:
-          // TODO Do something according to state
           pinCode = pinCode * 10 + digit;
           setBankomatState(PINCODE_INPUT_DIGIT_2);
           theView.setText("XX--");
           break;
         case PINCODE_INPUT_DIGIT_2:
-          // TODO Do something according to state
           pinCode = pinCode * 10 + digit;
           setBankomatState(PINCODE_INPUT_DIGIT_3);
           theView.setText("XXX-");
           break;
         case PINCODE_INPUT_DIGIT_3:
-          // TODO Do something according to state
           pinCode = pinCode * 10 + digit;
           setBankomatState(PINCODE_INPUT_DIGIT_4);
           theView.setText("XXXX");
@@ -92,8 +86,7 @@ public class BankomatModelImplementation implements BankomatModel
         default:
           break;
       }
-    //}  // end of if
-  }// end method
+    }// end method
 
   /**
    * 
@@ -214,7 +207,6 @@ public class BankomatModelImplementation implements BankomatModel
    */
   public void pressButtonEnter()
   {
-    // Eingabe des PIN beendet und bestaetigt (Enter)
     if (theState == PINCODE_INPUT_DIGIT_4)
     {
       if (pinCode == originalPIN)
@@ -228,7 +220,7 @@ public class BankomatModelImplementation implements BankomatModel
         setBankomatState(CARD_INSERTED);
       }
     }
-    // Geldbetrag eingeben, max 4 stellen lang
+    // Geldbetrag eingeben, max 4 Stellen lang
     if ( (theState == AMOUNT_INPUT_DIGIT_1) || 
          (theState == AMOUNT_INPUT_DIGIT_2) || 
          (theState == AMOUNT_INPUT_DIGIT_3) || 
@@ -315,7 +307,6 @@ public class BankomatModelImplementation implements BankomatModel
   {
     BankomatState oldState = theState;
     theState = state;
-    
     Debug.debug(oldState, theState);
   }
 } // end class
