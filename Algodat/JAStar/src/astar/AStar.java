@@ -1,15 +1,10 @@
 package astar;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import modelcontroller.DrawModel;
-import modelcontroller.commands.DrawModelResetCommand;
-import shapes.Shape;
 import shapes.ShapeLine;
 import shapes.ShapePoint;
 
@@ -22,7 +17,9 @@ public class AStar
         Set<ShapePoint> closedList = new HashSet<ShapePoint>();
         Set<ShapePoint> openList = new HashSet<ShapePoint>();
 
-		////////////////////////////////////////////////////////
+        Debugger.DEBUG_MODE=true;
+        
+        ////////////////////////////////////////////////////////
         // Delete this and replace by algorithm
         //ArrayList<Shape> myShapeList = new ArrayList<Shape>();
         //myShapeList.addAll(lineList);
@@ -59,49 +56,69 @@ public class AStar
         startPoint.setRoute(null);
         openList.add(startPoint);
         
+        Debugger.info("Luftline zw. Start und Endpunkt : " + startPoint.getHeuristics() );
+        
         while ( !closedList.contains(endPoint) && !openList.isEmpty())
         {
             ShapePoint expandPoint = AStar.findMininalPoint(openList);
-            System.out.println("Found expand : " + expandPoint.toString() );
+            Debugger.debug("Found expandPoint : " + expandPoint.toString() );
 
             expandPoint.blink();
+        
             savesetColor(expandPoint, startPoint, endPoint, Color.black);
             
             // nimm ihn aus der openlist
             openList.remove(expandPoint);
+            
             // setz ihn in die closedlist
             closedList.add(expandPoint);
-
+            
+            // und ordentlich einfarbeln
+            expandPoint.setColor(Color.BLACK);
+            
             // so ginge es auch
             // for (int i = 0; lineList.size(); i++)
             // so schauts gleich besser aus
             for (ShapeLine line : lineList)
             {
+             
+                Debugger.debug ("Line mit Länge : " + line.length() );
                 
                 if (line.hasPoint(expandPoint))
                 {
                     ShapePoint neighborPoint = line.traverse(expandPoint);
                     
-                    System.out.println("Found neighbor : " + neighborPoint.toString() );
+                    Debugger.debug("Found neighborPoint : " + neighborPoint.toString() );
                     
                     line.blink();
+                    
                     // drei möglichkeiten
                     // 1. neighbor ist in der closedlist
                     if (closedList.contains(neighborPoint))
                     {
                         // nix zu tun
+                        neighborPoint.setColor(Color.BLACK);
+                        AStar.savesetColor(expandPoint, startPoint, endPoint, Color.BLACK);
                     } // end if closedList
                     // 2. neighbor ist in der openlist
                     else if (openList.contains(neighborPoint))
                     {
-                        
+                  
                         double lenExpandPoint = AStar.pathLength(expandPoint) + line.length();
                         double lenNeighborPoint = AStar.pathLength(neighborPoint);
                         
+                        Debugger.debug("Pfadlänge Expandpoint + Länge der Linie : " + lenExpandPoint);
+                        Debugger.debug("Pfalänge Neighorpoint : " + lenNeighborPoint);
+                        
                         if ( lenNeighborPoint < lenExpandPoint )
                         {
+                            Debugger.debug("Pfadlänge Neighorpoint < Pfadlänge Expandpoint. Daher neue Route setzen !");
                             neighborPoint.setRoute(line);
                             neighborPoint.setHeuristics(pathLength(neighborPoint) + neighborPoint.distance(endPoint));
+                        }
+                        else
+                        {
+                            Debugger.debug("Pfadlänge Neighorpoint > Pfadlänge Expandpoint. Daher keine neue Route setzen !");
                         }
 
                         
@@ -109,13 +126,17 @@ public class AStar
                     // 3. sonst ist neighbor in unknownlist
                     else
                     {
-                        // unknown list
                         neighborPoint.setRoute(line);
-                        neighborPoint.setHeuristics(AStar.pathLength(neighborPoint) + neighborPoint.distance(endPoint));
                         
-                        // ich trottel ...
+                        // etwas ausfuehrlicher bitte
+                        double pathLength = AStar.pathLength(neighborPoint);
+                        double distance = neighborPoint.distance(endPoint);
+                        
+                        neighborPoint.setHeuristics( pathLength + distance);
+                        
+                        // ich trottel ... hab darauf vergessen
                         openList.add(neighborPoint);
-                        AStar.savesetColor(expandPoint, startPoint, endPoint, Color.GRAY);
+                        AStar.savesetColor(expandPoint, startPoint, endPoint, Color.WHITE);
                     }
             
                     //colorPath(neighborPoint, Color.MAGENTA);
@@ -127,7 +148,9 @@ public class AStar
             if ( closedList.contains(endPoint) )
             {
                 // weg gefunden
-                AStar.colorPath(endPoint, Color.black);
+                AStar.colorPath(endPoint, Color.BLACK);
+                Debugger.info("Länge der kuerzersten Route : " + endPoint.getHeuristics());
+                
             }
             else
             {
@@ -162,10 +185,17 @@ public class AStar
     {
         if (end.getRoute() == null)
         {
+            Debugger.debug("Pathlänge vom Endpoint : 0");
             return 0;
         } else
         {
-            return end.getRoute().length() + pathLength(end.getRoute().traverse(end));
+            double a = end.getRoute().length();
+            double b = pathLength(end.getRoute().traverse(end) );
+            
+            Debugger.debug("! Länge Route von Endpunkt ["+end.toString()+"] : " + a);
+            Debugger.debug("! Länge Path von Endpunkt  ["+end.toString()+"] : " + b);
+            
+            return a + b;
         }
     }
     
