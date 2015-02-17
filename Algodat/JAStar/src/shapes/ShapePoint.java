@@ -12,7 +12,7 @@ public class ShapePoint extends Shape {
 	private ShapeLine lineToPredecessor;
 	private double currentHeuristics;
 	
-	private final static int size = 10;
+	private final static int size = 20;
 	
 	public ShapePoint(Point pos, Color c) {
 		position = pos;
